@@ -1,0 +1,16 @@
+# ninja log v5
+1	296	1671053871443881093	CMakeFiles/Bakhankova_Asm_HW4.dir/Func.cpp.o	36b3e78d4c30dc7c
+0	676	1671053871824324481	CMakeFiles/Bakhankova_Asm_HW4.dir/main.cpp.o	f9f8209a8d66ec1b
+4	245	1671053903399541050	CMakeFiles/Bakhankova_Asm_HW4.dir/inputs.cpp.o	b2fa8266767885c4
+246	350	1671053903506406876	Bakhankova_Asm_HW4	25fa98b7e990daaa
+5	238	1671056859529498379	CMakeFiles/Bakhankova_Asm_HW4.dir/Func.cpp.o	36b3e78d4c30dc7c
+3	587	1671056859878917187	CMakeFiles/Bakhankova_Asm_HW4.dir/main.cpp.o	f9f8209a8d66ec1b
+587	645	1671056859938863107	Bakhankova_Asm_HW4	25fa98b7e990daaa
+5	223	1671056947289736852	CMakeFiles/Bakhankova_Asm_HW4.dir/inputs.cpp.o	b2fa8266767885c4
+223	280	1671056947349062619	Bakhankova_Asm_HW4	25fa98b7e990daaa
+1	703	1671057325378584443	CMakeFiles/Bakhankova_Asm_HW4.dir/inputs.cpp.o	b2fa8266767885c4
+703	764	1671057325442737196	Bakhankova_Asm_HW4	25fa98b7e990daaa
+1	681	1671057349830062482	CMakeFiles/Bakhankova_Asm_HW4.dir/inputs.cpp.o	b2fa8266767885c4
+681	739	1671057349891476124	Bakhankova_Asm_HW4	25fa98b7e990daaa
+2	673	1671057394637693576	CMakeFiles/Bakhankova_Asm_HW4.dir/inputs.cpp.o	b2fa8266767885c4
+673	731	1671057394698525396	Bakhankova_Asm_HW4	25fa98b7e990daaa
