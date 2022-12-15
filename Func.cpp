@@ -11,14 +11,15 @@ extern double left, right;
 
 double EPS = 0.00001;
 
-double Func(double x) {
+double func(double x) {
     return sin(5 * x) + 1;
 }
 
-double q_integral(double left_, double right_, double f_left, double f_right, double intgrl_now) {
+
+double qIntegral(double left_, double right_, double f_left, double f_right, double intgrl_now) {
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
     double mid = (left_ + right_) / 2;
-    double f_mid = Func(mid);
+    double f_mid = func(mid);
 
     //Аппроксимация по левому отрезку
     double l_integral = (f_left + f_mid) * (mid - left_) / 2;
@@ -27,15 +28,15 @@ double q_integral(double left_, double right_, double f_left, double f_right, do
 
     if (abs((l_integral + r_integral) - intgrl_now) > EPS) {
         //Рекурсия для интегрирования обоих значений
-        l_integral = q_integral(left_, mid, f_left, f_mid, l_integral);
-        r_integral = q_integral(mid, right_, f_mid, f_right, r_integral);
+        l_integral = qIntegral(left_, mid, f_left, f_mid, l_integral);
+        r_integral = qIntegral(mid, right_, f_mid, f_right, r_integral);
     }
 
     return (l_integral + r_integral);
 }
 
-void q_integral_void(double left_, double right_, double f_left, double f_right, double intgrl_now, double *res) {
-    *res = q_integral(left_, right_, f_left, f_right, intgrl_now);
+void qIntegralVoid(double left_, double right_, double f_left, double f_right, double intgrl_now, double *res) {
+    *res = qIntegral(left_, right_, f_left, f_right, intgrl_now);
 }
 
 double getResult() {
@@ -49,8 +50,8 @@ double getResult() {
 
     double result = 0;
     for (auto i = 0; i < n; ++i) {
-        threads.emplace_back(q_integral_void, left + len * i, left + len * (i + 1), Func(left + len * i),
-                             Func(left + len * (i + 1)), (Func(left + len * i) + Func(left + len * (i + 1))) * len / 2,
+        threads.emplace_back(qIntegralVoid, left + len * i, left + len * (i + 1), func(left + len * i),
+                             func(left + len * (i + 1)), (func(left + len * i) + func(left + len * (i + 1))) * len / 2,
                              &part_res[i]);
     }
 
