@@ -1,4 +1,3 @@
-#include <iostream>
 #include <thread>
 
 extern bool consoleInput();

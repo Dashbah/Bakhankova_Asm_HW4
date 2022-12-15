@@ -6,6 +6,7 @@
 #include <time.h>
 #include <unistd.h>
 
+
 extern double left, right;
 
 bool consoleInput() {
