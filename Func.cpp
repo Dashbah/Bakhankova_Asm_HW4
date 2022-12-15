@@ -2,6 +2,9 @@
 // Created by Dashbah on 14.12.2022.
 //
 #include <cmath>
+#include <algorithm>
+#include <thread>
+#include <vector>
 
 extern double left, right;
 
@@ -12,6 +15,7 @@ double Func(double x) {
 }
 
 double q_integral(double left_, double right_, double f_left, double f_right, double intgrl_now) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
     double mid = (left_ + right_) / 2;
     double f_mid = Func(mid);
 
@@ -29,9 +33,34 @@ double q_integral(double left_, double right_, double f_left, double f_right, do
     return (l_integral + r_integral);
 }
 
+void q_integral_void(double left_, double right_, double f_left, double f_right, double intgrl_now, double *res) {
+    *res = q_integral(left_, right_, f_left, f_right, intgrl_now);
+}
+
 double getResult() {
-    return q_integral(left, right, Func(left), Func(right),
-                      (Func(left) + Func(right)) * (right - left) / 2);
+    auto n = std::thread::hardware_concurrency();
+
+    auto len = (right - left) / n;
+
+    std::vector<std::thread> threads;
+    std::vector<double> part_res;
+    part_res.resize(n);
+
+    double result = 0;
+    for (auto i = 0; i < n; ++i) {
+        threads.emplace_back(q_integral_void, left + len * i, left + len * (i + 1), Func(left + len * i),
+                             Func(left + len * (i + 1)), (Func(left + len * i) + Func(left + len * (i + 1))) * len / 2,
+                             &part_res[i]);
+    }
+
+    for (std::thread& th : threads) {
+        th.join();
+    }
+
+    for (auto res : part_res) {
+        result += res;
+    }
+    return result;
 }
 
 double checker() {

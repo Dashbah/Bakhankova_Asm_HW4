@@ -4,21 +4,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <stdbool.h>
 #include <unistd.h>
-#include <random>
-#include <iostream>
-//
-// Created by Dashbah on 09.11.2022.
-//
-
 
 extern double left, right;
 
 bool consoleInput() {
-    printf("a, b, left, right: \n");
-//    scanf("%lf", &a);
-//    scanf("%lf", &b);
+    printf("left, right: \n");
     scanf("%lf", &left);
     scanf("%lf", &right);
     if (left >= right) {
@@ -50,13 +41,9 @@ bool fileInput() {
 void randomGeneration() {
     time_t t;
     srand((unsigned) time(&t));
-    //    std::random_device rd;
-    //    std::default_random_engine eng(rd());
-    //    std::uniform_real_distribution<double> distr(-10, 10);
-    //    std::cout << distr(left);
 
     left = rand() % 20 - 10;
-    right = left + rand() % 20;
+    right = left + rand() % 20 + 1;
 
     printf("Your parameters: \n");
     printf("left: ");

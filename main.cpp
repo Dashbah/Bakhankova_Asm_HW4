@@ -1,4 +1,5 @@
 #include <iostream>
+#include <thread>
 
 extern bool consoleInput();
 extern void randomGeneration();
@@ -45,9 +46,7 @@ int main() {
 
     double result;
     clock_t t = clock();
-    for (int i = 0; i < 20; ++i) {
-        result = getResult();
-    }
+    result = getResult();
     t = clock() - t;
 
     double expectedResult = checker();
